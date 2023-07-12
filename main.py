@@ -85,12 +85,18 @@ def get_task(task_id):
 def update_task(task_id):
     task = Task.query.get(task_id)
     if task:
-        task.title = request.json['title']
-        task.description = request.json['description']
-        task.priority = request.json['priority']
-        task.due_date = request.json['due_date']
-        task.category = request.json.get('category')
-        task.completed = request.json['completed']
+        if 'title' in request.json:
+            task.title = request.json['title']
+        if 'description' in request.json:
+            task.description = request.json['description']
+        if 'priority' in request.json:
+            task.priority = request.json['priority']
+        if 'due_date' in request.json:
+            task.due_date = request.json['due_date']
+        if 'category' in request.json:
+            task.category = request.json['category']
+        if 'completed' in request.json:
+            task.completed = request.json['completed']
         db.session.commit()
         return task_schema.jsonify(task)
     return jsonify({'message': 'Task not found'})
