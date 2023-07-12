@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, abort, make_response
 from flask_sqlalchemy import SQLAlchemy
 from flask_marshmallow import Marshmallow
 from config import DB_USERNAME, DB_PASSWORD, DB_NAME
@@ -51,12 +51,23 @@ def get_tasks():
 # Endpoint to create a new task
 @app.route('/tasks', methods=['POST'])
 def create_task():
+    if 'title' not in request.json:
+        error_message = 'Title is required'
+        response = make_response(jsonify({'error': error_message}), 400)
+        response.headers['Content-Type'] = 'text/plain'
+        abort(response)
+    if 'description' not in request.json:
+        error_message = 'Description is required'
+        response = make_response(jsonify({'error': error_message}), 400)
+        response.headers['Content-Type'] = 'text/plain'
+        abort(response)
     title = request.json['title']
     description = request.json['description']
-    priority = request.json['priority']
-    due_date = request.json['due_date']
+    priority = request.json.get('priority')
+    due_date = request.json.get('due_date')
     category = request.json.get('category')
-    new_task = Task(title, description, priority, due_date, category)
+    completed = request.json.get('completed')
+    new_task = Task(title, description, priority, due_date, category, completed)
     db.session.add(new_task)
     db.session.commit()
     return task_schema.jsonify(new_task)
