@@ -111,5 +111,24 @@ def delete_task(task_id):
         return jsonify({'message': 'Task deleted'})
     return jsonify({'message': 'Task not found'})
 
+# Endpoint to mark a task as completed
+@app.route('/tasks/<int:task_id>/complete', methods=['PUT'])
+def complete_task(task_id):
+    task = Task.query.get(task_id)
+    if task:
+        task.completed = True
+        db.session.commit()
+        return task_schema.jsonify(task)
+    return jsonify({'message': 'Task not found'})
+
+# Endpoint to retrieve tasks by category
+@app.route('/tasks/category/<string:category>', methods=['GET'])
+def get_tasks_by_category(category):
+    tasks = Task.query.filter_by(category=category).all()
+    if tasks:
+        result = tasks_schema.dump(tasks)
+        return jsonify(result)
+    return jsonify({'message': 'No tasks found for this category'})
+
 if __name__ == '__main__':
     app.run(debug=True)
