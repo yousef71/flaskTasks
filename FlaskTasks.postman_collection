@@ -1,0 +1,198 @@
+{
+	"info": {
+		"_postman_id": "a63d9e46-4362-40d0-aebc-2e7a0336211d",
+		"name": "neo mena",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18568015"
+	},
+	"item": [
+		{
+			"name": "Test Request",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/test",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"test"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Tasks",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/tasks",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"tasks"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET specific Task By ID",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/tasks/2",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"tasks",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Tasks By Category",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/tasks/category/sports",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"tasks",
+						"category",
+						"sports"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UPDATE specific Task By ID",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"completed\": false,\r\n    \"description\": \"10k run\",\r\n    \"id\": 2,\r\n    \"title\": \"run\",\r\n    \"priority\": 1,\r\n    \"due_date\": null,\r\n    \"category\": null\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/tasks/2",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"tasks",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UPDATE mark specific Task as Completed ( By ID )",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"completed\": false,\r\n    \"description\": \"10k run\",\r\n    \"id\": 2,\r\n    \"title\": \"run\",\r\n    \"priority\": 1,\r\n    \"due_date\": null,\r\n    \"category\": null\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/tasks/6/complete",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"tasks",
+						"6",
+						"complete"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE specific Task By ID",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/tasks/3",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"tasks",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ADD new Task",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"category\":\"sports\" ,\r\n    \"completed\": true,\r\n    \"description\": \"swimming 10 rounds\",\r\n    \"due_date\": null,\r\n    \"priority\": null,\r\n    \"title\": \"swim\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/tasks",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"tasks"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
