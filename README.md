@@ -11,10 +11,12 @@ git clone https://github.com/yousef71/flaskTasks.git
 2. Navigate to the project directory
 cd flaskTasks
 
-4. Install required dependencies:
+3. Install required dependencies:
 pip install Flask
 pip install SQLAlchemy
 pip install psycopg2
+   
+4. In config.py, change the variables for PostgreSQL credentials
 
 5. run application
 python main.py
