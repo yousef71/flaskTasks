@@ -31,3 +31,5 @@ CREATE TABLE tasks (
 
 6. run application <br /><br />
 python main.py
+
+Note: To test the endpoints on Postman, download the "FlaskTasks.postman_collection" file in the project directory then import it on postman!
